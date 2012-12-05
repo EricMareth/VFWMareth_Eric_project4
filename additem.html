@@ -15,7 +15,7 @@
 		<title>Add A Character</title>
 		<link rel="stylesheet" href="css/styles.css" />
 	</head>
-	<body>
+	<body id="body">
 		<h1>Character Note Entry</h1>
 	<!-- Form start-->
 		<form action="#" method="post" id="charForm">
@@ -58,7 +58,7 @@
 				</ul>
 			</fieldset>
 	<!-- Hidden value to give the character file an ID number for internal reference. -->
-			<input type="hidden" value="charIdNum########" />
+			<input type="hidden" id="charKey" value=""/>
 	<!-- Submit input type to add character to the database -->
 			<input type="button" id="saveChar" value="Bring Your Character To Life!" />
 		</form>

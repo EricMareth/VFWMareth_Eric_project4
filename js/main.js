@@ -47,6 +47,11 @@ window.addEventListener("DOMContentLoaded", function(){
 				$('displayData').style.display = "inline";
 				$('addChar').style.display = "none";			
 				$('items').style.display = "none";
+
+				
+				// Added to remove "Edit to Display" display echo.
+				var body = $('body');
+				body.removeChild($('items'));
 				break;
 			default:
 				return false;
@@ -56,6 +61,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function getData(){
 		toggleControls("on");
+		// Added to refresh the checked status due to "Edit to Display" mis-population.
+		var radios = document.forms[0].gender;
+		radios[1].removeAttribute("checked","checked");
+		radios[2].removeAttribute("checked","checked");
 		if (localStorage.length === 0){
 			alert("There are no characters lurking in the shadows! So some have been conjured for you...");
 			autoFillData();
@@ -74,7 +83,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
-			var obj = JSON.parse(value);						// ORIGINAL KEY definition = randomly generated number.
+			var obj = JSON.parse(value);						
 			var makeSubList = document.createElement('ul');
 			makeLi.appendChild(makeSubList);
 			for(var n in obj){
@@ -83,6 +92,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				var optSubText = obj[n][0] + " " + obj[n][1];
 				makeSubLi.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
+				$('charKey').value = key;
 			}
 			makeItemLinks(localStorage.key(i), linksLi);		// passing key to makeItemLinks function.
 		}
@@ -130,7 +140,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		$('charName').value  = item.name[1];
 		$('taleName').value  = item.story[1];
 		$('land').value  = item.land[1];
-		if($('land').value !== ""){
+		if($('land').value !== ""){								// Checks the field state of 'land' so it knows to populate 'town'.
 			$('town').value  = item.town[1];
 			townField();
 		}
@@ -145,17 +155,18 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		$('age').value  = item.age[1];
-		ageNum();
+		ageNum();												// Resets 'age' value to display current value.
 		$('type').value  = item.type[1];
 		$('details').value  = item.details[1];
 		$('created').value  = item.created[1];
+		$('charKey').value = this.key;
 		
 		// remove the initial listener from the input 'save contact'
 		save.removeEventListener("click", storeData);
 		$('saveChar').value = "Edit Character";
 		var editSubmit = $('saveChar');
 		// Save the key value established in this function as a property of the editSubmit event
-		//so we can use that value when we save the data we edited.
+		// so we can use that value when we save the data we edited.
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = this.key;
 	}
@@ -187,7 +198,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	function validate(e){
+	function validate(e){		
 		//Define the elements we want to check.
 		var getName = $('charName');
 		var getType = $('type');
@@ -220,6 +231,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}else{
 			storeData(this.key);
+			toggleControls("ready");
 		}
 	}
 	

@@ -1,0 +1,141 @@
+/*	Web App Part 4 CSS Elements
+	by Eric Mareth
+	for Visual Frameworks FSO
+	Term 1212
+*/
+
+
+*{
+	font-family: "Trebuchet MS" ;
+}
+
+html {
+	background: lightSteelBlue;
+	overflow: scroll;
+	
+}
+
+h1 {
+	font-family: Impact;
+	padding:10px 0px;
+	text-align: center;
+	letter-spacing: 2px;
+	color: #990000;
+	background: #fff;
+	border: hidden;
+	border-radius:20px;
+	box-shadow: 7px 7px 10px slateGrey;
+}
+
+h2 {
+	font-family: Impact;
+	letter-spacing: 2px;
+	text-align: center;
+	text-transform: capitalize;
+	margin-bottom: 50px;
+}
+
+span {
+	font-style: italic;
+}
+
+#charAge{
+	color: SteelBlue;
+	/*padding: 5px;
+	border: 2px solid black;
+	min-width: 200px;
+	border-radius: 3px;*/
+}
+
+[type = "range"]{
+	 margin-top: 10px;
+	 width: 200px;
+}
+
+[type = "radio"]{
+	 width: 30px;
+}
+
+p {
+	text-align: center;
+}
+
+#errors{
+	color: red;
+	font-style: italic;
+}
+
+#bioList{
+	list-style: none;
+	margin-left: -40px;
+}
+
+li {
+	list-style: none;
+	margin-left: -30px;
+}
+
+#charAdjust{
+	padding-top:15px;
+}
+
+#bio{
+	border: 6px groove steelBlue;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px 0px;
+	background: ghostWhite;
+}
+
+#townTxt {
+	color: gray;
+}
+
+
+fieldset {
+	background: white;
+	margin-bottom: 25px;
+	line-height: 28px;
+	box-shadow: 10px 10px 10px slateGrey;
+
+}
+
+
+legend {
+	font-style: italic;
+	background: white;
+	padding: 2px 10px 3px 10px;
+	outline: 2px solid gray;
+	color: #990000;
+}
+
+#charDet label{
+	display: block;
+}
+
+textarea{
+	width: 250px;
+	height: 50px;
+}
+
+a{
+	margin:0px 10px 0px 10px;
+	color: #990000
+}
+
+#saveChar{
+	margin-left: 5px;
+	width: 350px;
+	background: maroon;
+	color: ghostWhite;
+	font-weight: bold ;
+	font-size: 18px;
+}
+
+#addLink {
+	margin: 65px;
+	padding: 10px 18px;
+	background: white;
+	border: 6px double midnightblue;
+	box-shadow: 5px 5px 10px slateGrey;
+}

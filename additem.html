@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<!-- Web App Part 4 -->
+<!-- by Eric Mareth -->
+<!-- Visual Frameworks 1212 -->
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="description" content="A personal database of characters."/>
+		<meta name="keywords" content="character, database, note, creative, writer, actor, acting, tool"/>
+		<meta name="robots" content="index, follow"/>
+		<meta name="viewport" content="user-scalable=no, width=device-width"/>
+		<meta name="viewport" content="target-densitydpi=device-dpi"/>
+		<title>Add A Character</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<h1>Character Note Entry</h1>
+	<!-- Form start-->
+		<form action="#" method="post" id="charForm">
+	<!-- Fieldset and legend for Basic Character Information -->
+			<fieldset>
+				<legend>Basic Character Information</legend>
+				<span>* fields are required.</span>
+				<ul id="errors"></ul>
+				<ul>
+	<!-- Labels with for attribute and matching input id for character name, story the character is from, and the land the character lives in. -->
+					<li><label for="charName">Character Name *: </label><input type="text" id="charName" /></li>
+					<li><label for="taleName">For the Story: </label><input type="text" id="taleName" /></li>
+					<li><label for="land">Land: </label><input type="text" id="land" placeholder="Munchkinland" /></li>
+					<li><label for="town" id="townTxt">Town (disabled): </label><input type="text" id="town" placeholder="Oz, Neverland, etc." disabled />		
+	<!-- Radio button to declare character gender -->
+					<li>What is the character's gender?
+						<ul>
+							<li><input type="radio" checked value="Male" id="male" name="gender" /><label for="male">Male</label></li>
+							<li><input type="radio" value="Female" id="female" name="gender" /><label for="female">Female</label></li>
+							<li><input type="radio" value="It's Complicated" id="complicated" name="gender" /><label for="complicated">It's Complicated</label></li> 
+						</ul>
+					</li>
+				</ul>
+			</fieldset>
+	<!-- Fieldset and legend for Character Details -->
+			<fieldset id="charDet">
+				<legend>Character Details</legend>
+				<ul>
+	<!-- Range slider to declare the character's age. -->
+					<li><label for="age">Age Character Looks: <span id="charAge"></span></label><input type="range" min="5" max="200" id="age" name="age" step="5"/></li>
+	<!-- Dynamic selection list for Character Type -->
+					<li id="selectType"><label for="type">Type of Character *:</label></li>
+	<!-- Text area for any general notes about the character not covered by input fields. -->
+					<li><label for="details">Other details about your character:</label><textarea id="details"></textarea></li>
+					<li>
+	<!-- Date to record character's real world birthday. -->
+						<label for="created">Date character was created:</label>
+						<input type="date" min="1974-10-04" max="2999-07-13" id="created" name="created" required aria-required="true"/>
+					</li>
+				</ul>
+			</fieldset>
+	<!-- Hidden value to give the character file an ID number for internal reference. -->
+			<input type="hidden" value="charIdNum########" />
+	<!-- Submit input type to add character to the database -->
+			<input type="button" id="saveChar" value="Bring Your Character To Life!" />
+		</form>
+	<!-- Form end  -->
+	<!-- Anchor tags to access the "Clear Stored Data" and "Display Data" actions.-->
+		<p>
+			<a href="#" id="clearLink">Clear Stored Data</a>
+			<a href="#" id="displayData">Display Data</a>
+			<a href="additem.html" id="addChar" style="display:none">Create New Character</a>
+		</p>	
+		<script src="js/json.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+	</body>
+</html>

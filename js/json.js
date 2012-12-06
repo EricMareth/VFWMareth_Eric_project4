@@ -26,5 +26,17 @@ var json = {
 		"type":		["Character Type:", "Villain"],
 		"details":	["Details:", "The wickedest queen in all of Etera."],
 		"created":	["Birthdate:", "2004-06-25"]
+	},
+	
+		"character3" : {
+		"name" :	["Name:", "The Creeper"],
+		"story":	["Story:", "HorriDreams"],
+		"land":		["Land:", ""],
+		"town":		["Town:", ""],
+		"gender":	["Sex:", "Male"],
+		"age":		["Age:", "60"],
+		"type":		["Character Type:", "Supporting"],
+		"details":	["Details:", "The host of HorriDreams comic series."],
+		"created":	["Birthdate:", "2011-06-11"]
 	}
 }

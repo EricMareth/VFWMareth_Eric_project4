@@ -9,7 +9,8 @@ window.addEventListener("DOMContentLoaded", function(){
 		return theElement;
 	}
 	
-	function whatType(){
+	// Dynamically creates drop down list for form.
+	function whatType(){					
 		var formTag = document.getElementsByTagName("form"),
 			selectLi = $('selectType'),
 			makeSelect = document.createElement('select');
@@ -24,6 +25,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect);
 	}
 	
+	// Gets the value of the selected Gender button. 
 	function getSelectedRadio(){
 		var sexChange = document.forms[0].gender;
 		for(i=0; i<sexChange.length; i++){
@@ -33,6 +35,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	// Switches between form('off') and data('on'). 
 	function toggleControls(n){
 		switch(n){
 			case "on":
@@ -58,17 +61,22 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	
+	// Creates and populates the Data page.
 	function getData(){
+		// turns on Diplay Data page.
 		toggleControls("on");
+		
 		// Added to refresh the checked status due to "Edit to Display" mis-population.
 		var radios = document.forms[0].gender;
 		radios[1].removeAttribute("checked","checked");
 		radios[2].removeAttribute("checked","checked");
+		
+		// If there is nothing in local storage, this generates characters for you.
 		if (localStorage.length === 0){
 			alert("There are no characters lurking in the shadows! So some have been conjured for you...");
 			autoFillData();
 		}
+		// Creates 'div' tag, populates it with 'ul' containing data blocks.
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id","items");
 		var makeList = document.createElement('ul');
@@ -86,17 +94,30 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);						
 			var makeSubList = document.createElement('ul');
 			makeLi.appendChild(makeSubList);
+			getImage(obj.type[1], makeSubList);
 			for(var n in obj){
 				var makeSubLi = document.createElement('li');
 				makeSubList.appendChild(makeSubLi);
 				var optSubText = obj[n][0] + " " + obj[n][1];
 				makeSubLi.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
+				
+				// Added to give value to the hidden input attribute.
 				$('charKey').value = key;
 			}
 			makeItemLinks(localStorage.key(i), linksLi);		// passing key to makeItemLinks function.
 		}
 	}
+	
+	// Adds image to display categories.  
+	//NOTE: There are only three icons - good, bad, and neutral - but they apply to the sub-categories (i.e. Villain, Sub-Villain, Henchman are all bad.)
+	function getImage(typeIcon, makeSubList){					
+		var imageLi = document.createElement('li');
+		makeSubList.appendChild(imageLi);
+		var newImg = document.createElement('img');
+		var setSrc = newImg.setAttribute("src", "img/" + typeIcon + ".png");
+		imageLi.appendChild(newImg);
+	} 
 	
 	function autoFillData(){									// Auto populates a default character.
 		for(var n in json){
@@ -140,10 +161,12 @@ window.addEventListener("DOMContentLoaded", function(){
 		$('charName').value  = item.name[1];
 		$('taleName').value  = item.story[1];
 		$('land').value  = item.land[1];
-		if($('land').value !== ""){								// Checks the field state of 'land' so it knows to populate 'town'.
+		// Checks the field state of 'land' so it knows to populate 'town'.
+		if($('land').value !== ""){
 			$('town').value  = item.town[1];
 			townField();
 		}
+		//Checks correct radio button for edit.
 		var radios = document.forms[0].gender;
 		for(i=0; i<radios.length; i++){
 			if(radios[i].value == "Male" && item.gender[1] == "Male"){
@@ -155,7 +178,8 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		$('age').value  = item.age[1];
-		ageNum();												// Resets 'age' value to display current value.
+		// Resets 'age' value display to current value.
+		ageNum();
 		$('type').value  = item.type[1];
 		$('details').value  = item.details[1];
 		$('created').value  = item.created[1];
@@ -198,6 +222,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	// Validates that the character name and type fileds have been filled out.
 	function validate(e){		
 		//Define the elements we want to check.
 		var getName = $('charName');
@@ -209,18 +234,21 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 		var messageAry = [];
 		
+		// If name field is empty, return error.
 		if(getName.value === ""){
 			var nameError = "Please give your character a name.";
 			getName.style.border = "1px solid red";
 			messageAry.push(nameError);	
 		}
 		
+		// If type is not selected, returns error.
 		if(getType.value === "|-Choose Character Type-|"){
 			var typeError = "Please select a character type.";
 			getType.style.border = "1px solid red";
 			messageAry.push(typeError);	
 		}
 		
+		// if there is an error message in the array, display it!
 		if(messageAry.length >= 1){
 			for(i=0, j=messageAry.length; i < j; i++){
 				var txt = document.createElement('li');
@@ -236,7 +264,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 		
-	
+	// Generates random key and attaches it to the data object.
 	function storeData(key){
 		if(!key){
 			var id			= Math.floor(Math.random()*10000001);
@@ -260,14 +288,16 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	}
 	
-	function ageNum(){ 										// My function answer to the challenge to add a range display.
+	// My function answer to the challenge to add a range display.
+	function ageNum(){
 		var	ageVal = ageData.value,
 			field = $('charAge');
 		field.innerHTML = "";
 		field.innerHTML = ageVal;
 	}
 	
-	function townField(){									// Activates 'Town' field for population.
+	// Activates disabled 'Town' field for population.
+	function townField(){
 		var townFld = $('town'),
 			townLbl = $('townTxt'),
 			newTxt = "Town?: ",
@@ -278,7 +308,8 @@ window.addEventListener("DOMContentLoaded", function(){
 			townLbl.innerHTML = newTxt;
 			townFld.removeAttribute("disabled", "disabled");
 		}else{
-			townLbl.style.color = "gray";					// returns 'town' field to original state if user deletes 'land' field data.
+			// Returns 'town' field to original state if user deletes 'land' field data.
+			townLbl.style.color = "gray";
 			townLbl.innerHTML = dfltText;
 			townFld.setAttribute("disabled", "disabled");
 			townFld.value = "";
@@ -287,7 +318,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	
-	var charType = ["|-Choose Character Type-|", "Hero", "Side-kick", "Love Interest", "Mentor", "Villain", "Henchman", "Sub-Villain", "Supporting", "Walk-on", "Off-Screen"];
+	var charType = ["|-Choose Character Type-|", "Hero", "Side-kick", "Love-Interest", "Mentor", "Villain", "Henchman", "Sub-Villain", "Supporting", "Walk-On", "Off-Screen"];
 	var	errMsg  = $('errors');
 
 	whatType();
@@ -299,10 +330,13 @@ window.addEventListener("DOMContentLoaded", function(){
 	var save = $('saveChar');
 	save.addEventListener("click", validate);
 	
-	var ageData = $('age');									// My var answer to the challenge to add a range display.
+	// My var answer to the challenge to add a range display.
+	var ageData = $('age');
 	ageNum();
 	ageData.addEventListener("change", ageNum);	
-	var askTown = $('land');								// Checks 'Land' field to determine active state of townField(). 
+	
+	// Checks 'Land' field to determine active state of townField().
+	var askTown = $('land'); 
 	askTown.addEventListener("blur", townField);
 	askTown.addEventListener("keypress", townField);
 });

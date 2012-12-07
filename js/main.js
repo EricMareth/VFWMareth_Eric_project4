@@ -9,6 +9,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		return theElement;
 	}
 	
+	
 	// Dynamically creates drop down list for form.
 	function whatType(){					
 		var formTag = document.getElementsByTagName("form"),
@@ -80,13 +81,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id","items");
 		var makeList = document.createElement('ul');
-		makeList.setAttribute("id","bioList");					// Id created to attach CSS.
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
 		$('items').style.display = "display";
 		for( i=0, length=localStorage.length; i<length; i++){
 			var makeLi = document.createElement('li');
-			makeLi.setAttribute("id","bio");					// Id created to attach CSS.
 			var linksLi = document.createElement('li');
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
@@ -288,7 +287,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	}
 	
-	// My function answer to the challenge to add a range display.
+	// *ADDED: My function answer to the challenge to add a range display.
 	function ageNum(){
 		var	ageVal = ageData.value,
 			field = $('charAge');
@@ -296,7 +295,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		field.innerHTML = ageVal;
 	}
 	
-	// Activates disabled 'Town' field for population.
+	// *ADDED: Activates disabled 'Town' field for population.
 	function townField(){
 		var townFld = $('town'),
 			townLbl = $('townTxt'),
@@ -330,12 +329,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	var save = $('saveChar');
 	save.addEventListener("click", validate);
 	
-	// My var answer to the challenge to add a range display.
+	// *ADDED: My var answer to the challenge to add a range display.
 	var ageData = $('age');
 	ageNum();
 	ageData.addEventListener("change", ageNum);	
 	
-	// Checks 'Land' field to determine active state of townField().
+	// *ADDED: Checks 'Land' field to determine active state of townField().
 	var askTown = $('land'); 
 	askTown.addEventListener("blur", townField);
 	askTown.addEventListener("keypress", townField);

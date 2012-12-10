@@ -29,7 +29,7 @@
 					<li><label for="charName">Character Name *: </label><input type="text" id="charName" /></li>
 					<li><label for="taleName">For the Story: </label><input type="text" id="taleName" /></li>
 					<li><label for="land">Land: </label><input type="text" id="land" placeholder="Munchkinland" /></li>
-					<li><label for="town">Town (disabled): </label><input type="text" id="town" placeholder="Oz, Neverland, etc." disabled />		
+					<li><label for="town" id="townTxt">Town (disabled): </label><input type="text" id="town" placeholder="Oz, Neverland, etc." disabled />		
 	<!-- Radio button to declare character gender -->
 					<li>What is the character's gender?
 						<ul>
@@ -45,7 +45,7 @@
 				<legend>Character Details</legend>
 				<ul>
 	<!-- Range slider to declare the character's age. -->
-					<li><label for="age">Age Character Looks: <span id="charAge"></span></label><input type="range" min="5" max="200" id="age" name="age" step="5"/></li>
+					<li><label for="age">Age Character Looks: <span id="charAge"></span></label><input type="range" min="5" max="200" id="age" name="age" step="5" placeholder="5-200 years"/></li>
 	<!-- Dynamic selection list for Character Type -->
 					<li id="selectType"><label for="type">Type of Character *:</label></li>
 	<!-- Text area for any general notes about the character not covered by input fields. -->
@@ -53,7 +53,7 @@
 					<li>
 	<!-- Date to record character's real world birthday. -->
 						<label for="created">Date character was created:</label>
-						<input type="date" min="1974-10-04" max="2999-07-13" id="created" name="created" required aria-required="true"/>
+						<input type="date" min="1974-10-04" max="2999-07-13" id="created" name="created" required aria-required="true" placeholder="Month/Day/Year"/>
 					</li>
 				</ul>
 			</fieldset>

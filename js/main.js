@@ -336,6 +336,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	// *ADDED: Checks 'Land' field to determine active state of townField().
 	var askTown = $('land'); 
+	var check = askTown.addEventListener("keypress", townField);
 	askTown.addEventListener("blur", townField);
-	askTown.addEventListener("keypress", townField);
 });

@@ -13,29 +13,27 @@ html {
 	background-image: -webkit-gradient(linear,
 		0% 0%, 
 		0% 30%, 
-		from(#cd5c5c), 
-		to(#b0c4de));
-	background-image: -moz-linear-gradient(270deg, #cd5c5c, #b0c4de 30%);
+		from(#89622E), 
+		to(#E9D6BE));
+	background-image: -moz-linear-gradient(270deg, #89622E, #E9D6BE 30%);
+	background-image: -o-linear-gradient(270deg, #89622E, #E9D6BE 30%);
 	overflow: scroll;
 	
 }
 
 h1 {
-	font-family: Impact;
+	font-family: Courier;
 	padding:10px 0px;
 	text-align: center;
-	letter-spacing: 2px;
-	color: #990000;
+	color: #4682b4;
 	background: #fff;
 	border-radius:20px;
-	border: 4px solid #333;
-	box-shadow: inset -7px -7px 30px #333;
+	box-shadow: inset 7px -7px 30px #496b87;
 	margin-bottom: 45px;
 }
 
 h2 {
-	font-family: Impact;
-	letter-spacing: 3px;
+	font-family: Courier;
 	text-align: center;
 	text-transform: capitalize;
 	margin: 50px 0px;
@@ -46,8 +44,8 @@ p > a[href*=add]:not(#addChar) {
 	margin: 65px;
 	padding: 10px 18px;
 	background: white;
-	border: 6px double midnightblue;
-	box-shadow: 5px 5px 10px #000000;
+	border: 6px double #174a75;
+	box-shadow: -7px 7px 50px #9e8d76;
 }
 
 span:not(#charAge) {
@@ -107,17 +105,18 @@ fieldset {
 	background: white;
 	margin-bottom: 25px;
 	line-height: 28px;
-	box-shadow: 10px 10px 20px #000000;
+	box-shadow: 10px 10px 20px #9e8d76;
 
 }
 
 
 legend {
+	font-family: Courier;
 	font-style: italic;
 	background: white;
 	padding: 2px 10px 3px 10px;
 	outline: 2px solid gray;
-	color: #990000;
+	color: #4682b4;
 }
 
 form > fieldset:last-of-type label{
@@ -130,14 +129,34 @@ textarea{
 }
 
 a{
-	margin:0px 10px 0px 10px;
-	color:#800000;
+	padding: 8px;
+	margin:0px 2px;
+	color:#174a75;
+	border-radius: 10px;
+	background: ghostWhite;
+}
+
+a:active{
+	color:#90b8da;
+	background: white;
 }
 
 [type=button]{
-	margin-left: 5px;
+	margin: 10px 5px;
 	width: 350px;
-	background: maroon;
+	height:50px;
+	background: #174a75;
+	color: ghostWhite;
+	font-weight: bold;
+	border: 5px outset buttonface;
+	font-size: 18px;
+}
+
+[type=button]:active{
+	margin: 10px 5px;
+	width: 350px;
+	height:50px;
+	background: #4682b4;
 	color: ghostWhite;
 	font-weight: bold ;
 	font-size: 18px;

@@ -287,7 +287,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	}
 	
-	// *ADDED: My function answer to the challenge to add a range display.
+	// *ADDED: My EXTRA CREDIT function to add a range display.
 	function ageNum(){
 		var	ageVal = ageData.value,
 			field = $('charAge');
@@ -329,7 +329,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var save = $('saveChar');
 	save.addEventListener("click", validate);
 	
-	// *ADDED: My var answer to the challenge to add a range display.
+	// *ADDED: My EXTRA CREDIT to add a range display.
 	var ageData = $('age');
 	ageNum();
 	ageData.addEventListener("change", ageNum);	

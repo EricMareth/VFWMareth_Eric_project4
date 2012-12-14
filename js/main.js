@@ -291,7 +291,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	function ageNum(){
 		var	ageVal = ageData.value,
 			field = $('charAge');
-		field.innerHTML = "";
 		field.innerHTML = ageVal;
 	}
 	

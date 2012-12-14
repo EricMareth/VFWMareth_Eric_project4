@@ -32,13 +32,24 @@ h1 {
 	margin-bottom: 45px;
 }
 
-h2 {
+h2{
+	font-style:oblique;
+	text-align: center;
+}
+
+h2:nth-of-type(2){
+	font: normal bold 30px/10px Courier;
+	color: #4682b4;
+} 
+
+h3{
 	font-family: Courier;
 	text-align: center;
 	text-transform: capitalize;
-	margin: 50px 0px;
-	text-shadow: 5px 5px 5px #fff;
+	margin: 200px 0px 50px 0px;
+	text-shadow: 0 0 8px red;
 }
+
 
 p > a[href*=add]:not(#addChar) {
 	margin: 65px;
@@ -46,6 +57,10 @@ p > a[href*=add]:not(#addChar) {
 	background: white;
 	border: 6px double #174a75;
 	box-shadow: -7px 7px 50px #9e8d76;
+}
+
+p {
+	text-align: center;
 }
 
 span:not(#charAge) {
@@ -65,9 +80,6 @@ label > span{
 	 width: 30px;
 }
 
-p {
-	text-align: center;
-}
 
 span + ul{
 	color: red;
@@ -131,7 +143,7 @@ textarea{
 a{
 	padding: 8px;
 	margin:0px 2px;
-	color:#174a75;
+	color:#76acda;
 	border-radius: 10px;
 	background: ghostWhite;
 }
